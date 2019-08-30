@@ -35,6 +35,10 @@ MI_CONDUCTIVITY = "conductivity"
 MI_BATTERY = "battery"
 
 print('plantcv installed, version' + pcv.__version__)
+pcv.params.debug = "print"
+# TODO - Work in progress...
+# obj, mask = pcv.object_composition(img=img, contours=roi_objects, hierarchy=hierarchy)
+# shape_img = pcv.analyze_object(img=img, obj=obj, mask=mask)
 
 # MAC Address of Mi Plant Sensor Bluetooth
 dongle_addresses = ['C4:7C:8D:6A:D3:97']
