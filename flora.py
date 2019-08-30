@@ -8,8 +8,7 @@
 # Install https://github.com/jjhelmus/berryconda (armv6l archicture)
 # wget -O install-berryconda.sh "https://github-production-release-asset-2e65be.s3.amazonaws.com/75886189/cee3b8a8-5fd0-11e7-9c4d-49e02b8d9630?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190827%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190827T190041Z&X-Amz-Expires=300&X-Amz-Signature=fc61660a227a9486ba0fe81806b6319957844a139c4b6f950c69c95a07505433&X-Amz-SignedHeaders=host&actor_id=327285&response-content-disposition=attachment%3B%20filename%3DBerryconda3-2.0.0-Linux-armv6l.sh&response-content-type=application%2Foctet-stream"
 # chmod +x install-berryconda.sh && ./install-berryconda.sh -b
-# /root/berryconda3/bin/conda create -y -n flora python=3.6 plantcv
-# /root/berryconda3/bin/conda activate flora
+# /root/berryconda3/bin/conda install plantcv
 # cd /root/berryconda3/bin
 # ./pip install miflora picamera
 # cd /home/pi/flora
