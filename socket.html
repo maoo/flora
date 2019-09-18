@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flora - Your virtual plant assistant</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+    </style>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://pixijs.download/v4.5.5/pixi.min.js"></script>
+    <script src="pixi.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = io();
+        socket.on('new data', function(msg){
+            setupLevelCanvas();
+            const values = msg.split(',');
+            initLevels(
+                values[2], //temperature in %
+                values[4], //light in %
+                values[5], //moisture in %
+                values[7] //conductivity in %
+            );
+        });
+    </script>
+  </body>
+</html>
