@@ -10,15 +10,10 @@ Flora is composed by:
 ## Run locally
 
 1. Build the project, using `npm install`
-2. Create a data stream:
-```
-touch data/flora.csv
-echo "21:52:27-18-Sep-19,25.2,63,126,1,57,500,83,98" >> data/flora.csv
-```
-3. Run the poller, with `npm run poller`
-4. Run the app, with `npm start`
-5. `open http://raspberrypi.local:3000`
-6. Monitor the poller and nodeJS output, to check if data is flowing, using `tail -f data/flora.csv`
+2. Run the poller, with `npm run poller`
+3. Run the app, with `npm start`
+4. `open http://localhost:3000`
+5. Monitor the poller and nodeJS output, to check if data is flowing, using `tail -f data/flora.csv`
 
 ## Preparing a Raspberry PI
 
@@ -41,6 +36,22 @@ cd /root/berryconda3/bin
 ./pip install miflora picamera
 ```
 
-## Deploying to a Raspberry PI
+You also need to enable picamera using `sudo raspi-config`, see https://www.raspberrypi.org/documentation/configuration/camera.md
+
+## Deploying to a Raspberry PI and starting the app
 
 Simply run `npm run build ; npm run deploy`; default SSH password is `raspberry`.
+
+Then log into the Raspberry PI, build the project, run poller and app:
+
+```
+ssh pi@raspberrypi.local
+sudo su
+cd flora
+npm install
+npm run poller &
+npm start &
+tail -f data/flora.csv
+```
+
+Now you can open `http://raspberrypi.local:3000/` and see Flora in action!
