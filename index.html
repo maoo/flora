@@ -17,12 +17,15 @@
         socket.on('new data', function(msg){
             setupLevelCanvas();
             const values = msg.split(',');
-            initLevels(
-                values[2], //temperature in %
-                values[4], //light in %
-                values[5], //moisture in %
-                values[7] //conductivity in %
-            );
+            initLevels({
+                'temperature': values[1],
+                'temperaturePercentage': values[2],
+                'light': values[3],
+                'lightPercentage': values[4],
+                'moisture': values[5],
+                'conductivity': values[6],
+                'conductivityPercentage':values[7]
+            });
         });
     </script>
   </body>

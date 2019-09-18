@@ -10,7 +10,7 @@ app.use(express.static('public'));
 const port = 3000
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'socket.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 tail.on("line", function(data) {

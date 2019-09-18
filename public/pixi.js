@@ -8,7 +8,7 @@ var stage = new PIXI.Container();
 var graphics = new PIXI.Graphics();
 var renderer = null;
 
-function drawLevelLines(g,posX,posY,levelName,levelValue, color) {
+function drawLevelLines(g,posX,posY,levelName,levelValue, valuePercentage, color) {
     const LEVEL_HEIGHT=200
     const LEVEL_WIDTH=50
     // Draw the container
@@ -32,6 +32,12 @@ function drawLevelLines(g,posX,posY,levelName,levelValue, color) {
     labelText.y = LEVEL_HEIGHT+20+posY;
     g.addChild(labelText);
 
+    var labelText = new PIXI.Text(valuePercentage + "%",textOptions);
+    labelText.anchor.x = 1;
+    labelText.x = posX+labelText.width/2+LEVEL_WIDTH/2;
+    labelText.y = LEVEL_HEIGHT+40+posY;
+    g.addChild(labelText);
+
     // Calculate pixels from value (in %)
     var valueInPx = posY - LEVEL_WIDTH - levelValue*2
     // Draw the histogram (rectangle)
@@ -45,17 +51,18 @@ function setupLevelCanvas() {
         800, 
         600, 
         { antialias: true, transparent: true });
+    document.body.innerHTML = '';
     document.body.appendChild(renderer.view);
     stage.interactive = true;
     stage.addChild(graphics);
     console.log("rendered pixi");
 }
 
-function initLevels(temperature, light, moisture, conductivity) {
-    drawLevelLines(graphics,50,50,"Temperature",temperature,0xFF700B);
-    drawLevelLines(graphics,150,50,"Moisture",moisture,0xFF700B);
-    drawLevelLines(graphics,250,50,"Conductivity",conductivity,0xFF700B);
-    drawLevelLines(graphics,350,50,"Light",light,0xFF700B);
+function initLevels(values) {
+    drawLevelLines(graphics,50,50,"Temperature",values['temperature'],values['temperaturePercentage'], 0xFF700B);
+    drawLevelLines(graphics,150,50,"Moisture",values['moisture'],values['moisture'],0xFF700B);
+    drawLevelLines(graphics,250,50,"Conductivity",values['conductivity'], values['conductivityPercentage'],0xFF700B);
+    drawLevelLines(graphics,350,50,"Light",values['light'],values['lightPercentage'],0xFF700B);
     console.log("drew values");
     renderer.render(stage);
 }
