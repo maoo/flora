@@ -1,3 +1,6 @@
+### We moved to GitLab!
+Here's the link of the new repository - https://gitlab.com/session-tech/flora
+
 # Flora
 
 Flora is a virtual plan assistant, originally designed to help kids to take care of their first plants.
